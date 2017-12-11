@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Domain.Entities.document>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_khaledLayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Refrence
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datesubmit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.etat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+       
+        <th>
+            user
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datesubmit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.etat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.user.lastname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id }) 
+            @Html.ActionLink("Archiver", "../Archive/Create", new { id = item.id }, new { @class = "button btn-large green" })
+        </td>
+    </tr>
+}
+
+</table>
